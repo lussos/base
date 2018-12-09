@@ -1,0 +1,233 @@
+// Improve default Bootrstap dropdown 
+
+
+.dropdown-hover {
+  position: relative;
+
+  .dropdown-menu {
+    transition: all 0.3s;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 15px);
+    min-width: 190px;
+    background-color: $white;
+    display: block;
+    z-index: 100;
+
+    // Position of menu by default is in Center: Options 'menu-hover-lef' and 'menu-hover-right'
+    .dropdown-footer {
+      height: 45px;
+      background-color: $gray-200;
+      text-align: center;
+
+      a {
+        color: $gray-600;
+        line-height: 45px;
+
+        &:hover {
+          color: $gray-900;
+        }
+      }
+    }
+
+    &.hover-menu-right {
+      transform: translate(0, 15px);
+      right: 0;
+      left: initial;
+    }
+
+    &.hover-menu-left {
+      transform: translate(0, 15px);
+      left: 0;
+    }
+
+    &.notifications-dropdown-list {
+      width: 320px;
+      max-height: 365px;
+
+      .notifications-list {
+        max-height: calc(365px - 45px);
+        overflow-y: scroll;
+
+        li {
+          border-bottom: solid thin $border-color;
+
+          &:last-child {
+            border-bottom: solid 0;
+          }
+
+          &::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            border-radius: 10px;
+            left: 0.5rem;
+            top: 1.15rem;
+          }
+
+          .date {
+            font-size: 12px;
+            margin-bottom: 0;
+
+            span {
+              &:first-child {
+                text-align: left;
+                font-weight: 600;
+              }
+
+              &:nth-child(2) {
+                float: right;
+              }
+            }
+          }
+
+          .title {
+            margin-bottom: 0;
+          }
+
+          .content {
+            overflow: hidden;
+            text-overflow: -o-ellipsis-lastline;
+            text-overflow: ellipsis;
+            white-space: initial;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            max-height: 33px;
+            font-size: 12px;
+            opacity: .7;
+            margin-bottom: 0;
+          }
+
+          &.warning {
+            position: relative;
+
+            &:before {
+              background-color: $warning;
+            }
+
+            .date {
+              span {
+                &:first-child {
+                  color: $warning;
+                }
+              }
+            }
+
+            .title {
+              color: $warning;
+            }
+          }
+
+          &.info {
+            position: relative;
+
+            &:before {
+              background-color: $info;
+            }
+
+            .date {
+              span {
+                &:first-child {
+                  color: $info;
+                }
+              }
+            }
+
+            .title {
+              color: $info;
+            }
+          }
+
+          &.danger {
+            position: relative;
+
+            &:before {
+              background-color: $danger;
+            }
+
+            .date {
+              span {
+                &:first-child {
+                  color: $danger;
+                }
+              }
+            }
+
+            .title {
+              color: $danger;
+            }
+          }
+
+          &.success {
+            position: relative;
+
+            &:before {
+              background-color: $success;
+            }
+
+            .date {
+              span {
+                &:first-child {
+                  color: $success;
+                }
+              }
+            }
+
+            .title {
+              color: $success;
+            }
+          }
+        }
+      }
+    }
+
+    &.chat-dropdown-list {
+      width: 320px;
+      max-height: 365px;
+
+      .chat-list {
+        max-height: calc(365px - 45px);
+        overflow-y: scroll;
+
+        li {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          border-bottom: solid thin $border-color;
+          height: 60px;
+          padding: 0 15px;
+
+          &:last-child {
+            border-bottom: solid 0;
+          }
+
+          p {
+            margin: 0;
+            padding-left: 15px;
+          }
+        }
+      }
+    }
+  }
+
+  &:hover {
+    .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, 0);
+
+      &.hover-menu-right {
+        transform: translate(0, 0);
+      }
+
+      &.hover-menu-left {
+        transform: translate(0, 0);
+      }
+    }
+  }
+}

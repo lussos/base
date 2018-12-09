@@ -1,0 +1,14 @@
+.user-avatar {
+  background-image: $user-placeholder;
+  background-size: cover;
+  border-radius: 50%;
+  display: inline;
+  overflow: hidden;
+  background-position: 50% 50%;
+
+  &.sm {
+    width: 40px;
+    height: 40px;
+    ;
+  }
+}

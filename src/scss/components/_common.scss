@@ -1,0 +1,59 @@
+body,
+html {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+body {
+  background-color: $body-bg;
+  color: $body-color;
+  font-size: $font-size-base;
+  font-family: $font-family-base;
+  overflow: hidden;
+  position: relative;
+
+  main {
+    position: fixed;
+    left: $sidebar-width;
+    height: $sidebar-height;
+    width: $content-width;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    top: $header-height;
+    transition: all .3s;
+
+    @media (max-width: 991px) {
+      left: 0;
+    }
+  }
+
+  header,
+  main {
+    &.menu-open {
+      transform: translateX($sidebar-width)
+    }
+  }
+}
+
+// Scrollbar ie10+ hack
+@media screen and (-ms-high-contrast: active),
+(-ms-high-contrast: none) {
+  ::-webkit-scrollbar {
+    background-color: transparent;
+    width: 6px
+  }
+
+  ::-webkit-scrollbar-track {}
+
+  ::-webkit-scrollbar-thumb {
+    width: 6px;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.2);
+
+  }
+
+  ::-webkit-scrollbar-track-piece {
+    background-coor: transparent;
+  }
+}
