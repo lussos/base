@@ -8895,6 +8895,7 @@ pre,
 code,
 kbd,
 samp {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 1em; }
 
 pre {
@@ -9373,6 +9374,27 @@ body {
               color: #28a745; }
             .dropdown-hover .dropdown-menu.notifications-dropdown-list .notifications-list li.success .title {
               color: #28a745; }
+    .dropdown-hover .dropdown-menu.chat-dropdown-list {
+      width: 320px;
+      max-height: 365px; }
+      .dropdown-hover .dropdown-menu.chat-dropdown-list .chat-list {
+        max-height: calc(365px - 45px);
+        overflow-y: scroll; }
+        .dropdown-hover .dropdown-menu.chat-dropdown-list .chat-list li {
+          display: -ms-flexbox;
+          display: flex;
+          -ms-flex-pack: start;
+              justify-content: flex-start;
+          -ms-flex-align: center;
+              align-items: center;
+          border-bottom: solid thin #E7E7E7;
+          height: 60px;
+          padding: 0 15px; }
+          .dropdown-hover .dropdown-menu.chat-dropdown-list .chat-list li:last-child {
+            border-bottom: solid 0; }
+          .dropdown-hover .dropdown-menu.chat-dropdown-list .chat-list li p {
+            margin: 0;
+            padding-left: 15px; }
     .dropdown-hover .dropdown-menu.chat-dropdown-list {
       width: 320px;
       max-height: 365px; }

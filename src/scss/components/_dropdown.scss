@@ -213,6 +213,35 @@
         }
       }
     }
+
+    &.chat-dropdown-list {
+      width: 320px;
+      max-height: 365px;
+
+      .chat-list {
+        max-height: calc(365px - 45px);
+        overflow-y: scroll;
+
+        li {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          border-bottom: solid thin $border-color;
+          height: 60px;
+          padding: 0 15px;
+
+          &:last-child {
+            border-bottom: solid 0;
+          }
+
+          p {
+            margin: 0;
+            padding-left: 15px;
+          }
+        }
+      }
+    }
+
   }
 
   &:hover {
