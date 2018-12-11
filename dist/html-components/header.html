@@ -12,17 +12,26 @@
       <svg class="icon-basket sm-hide">
         <use xlink:href="./fonts/icons.svg#icon-basket-3"></use>
       </svg>
-      <div class="dropdown-menu dropdown-cart hover-menu-right">
+      <div class="dropdown-menu cart-dropdown hover-menu-right">
         <ul class="cart-list">
           <li>
-            <img src="./images/ecommerse/cart/1.png" alt="">
+            <div class="img-holder">
+              <img src="./images/ecommerse/cart/1.png" alt="">
+            </div>
+            <p>Beats by Dre <span class="font-weight-bold">$299.99</span></p>
           </li>
           <li>
-            <img src="./images/ecommerse/cart/2.png" alt="">
+            <div class="img-holder">
+              <img src="./images/ecommerse/cart/2.png" alt="">
+            </div>
+            <p>POLAROID SP01W very long name to see<span class="font-weight-bold">$329.99</span></p>
+          </li>
+          <li class="pt-4 pb-4">
+            <p class="text-right font-weight-bold">Total: $529.98 </p>
           </li>
         </ul>
         <div class="dropdown-footer">
-          <a href="">See All</a>
+          <a href="">Checkout</a>
         </div>
       </div>
     </li>
@@ -120,7 +129,33 @@
         </div>
       </div>
     </li>
-    <li class="user-placeholder">
+    <li class="user-placeholder dropdown-hover">
+      <div class="dropdown-menu hover-menu-right">
+        <a class="dropdown-item">
+          <svg class="icon-alarm">
+            <use xlink:href="./fonts/icons.svg#icon-alarm"></use>
+          </svg>
+          <span>Profile</span>
+        </a>
+        <a class="dropdown-item">
+          <svg class="icon-alarm">
+            <use xlink:href="./fonts/icons.svg#icon-alarm"></use>
+          </svg>
+          <span>Settings</span>
+        </a>
+        <a class="dropdown-item">
+          <svg class="icon-alarm">
+            <use xlink:href="./fonts/icons.svg#icon-alarm"></use>
+          </svg>
+          <span>Help</span>
+        </a>
+        <a class="dropdown-item">
+          <svg class="icon-alarm">
+            <use xlink:href="./fonts/icons.svg#icon-alarm"></use>
+          </svg>
+          <span>Logout</span>
+        </a>
+      </div>
     </li>
   </ul>
 </nav>

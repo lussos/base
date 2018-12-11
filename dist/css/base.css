@@ -8895,7 +8895,6 @@ pre,
 code,
 kbd,
 samp {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 1em; }
 
 pre {
@@ -9159,7 +9158,7 @@ body {
             justify-content: center;
         -ms-flex-align: center;
             align-items: center; }
-        .b-header .header-nav > ul > li svg {
+        .b-header .header-nav > ul > li > svg {
           width: 22px;
           height: 22px;
           fill: #3d3d3d; }
@@ -9287,6 +9286,11 @@ body {
     background-color: #fff;
     display: block;
     z-index: 100; }
+    .dropdown-hover .dropdown-menu a svg {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+      margin-bottom: 4px; }
     .dropdown-hover .dropdown-menu .dropdown-footer {
       height: 45px;
       background-color: #EEEDED;
@@ -9395,13 +9399,13 @@ body {
           .dropdown-hover .dropdown-menu.chat-dropdown-list .chat-list li p {
             margin: 0;
             padding-left: 15px; }
-    .dropdown-hover .dropdown-menu.chat-dropdown-list {
+    .dropdown-hover .dropdown-menu.cart-dropdown {
       width: 320px;
       max-height: 365px; }
-      .dropdown-hover .dropdown-menu.chat-dropdown-list .chat-list {
+      .dropdown-hover .dropdown-menu.cart-dropdown .cart-list {
         max-height: calc(365px - 45px);
         overflow-y: scroll; }
-        .dropdown-hover .dropdown-menu.chat-dropdown-list .chat-list li {
+        .dropdown-hover .dropdown-menu.cart-dropdown .cart-list li {
           display: -ms-flexbox;
           display: flex;
           -ms-flex-pack: start;
@@ -9409,13 +9413,24 @@ body {
           -ms-flex-align: center;
               align-items: center;
           border-bottom: solid thin #E7E7E7;
-          height: 60px;
           padding: 0 15px; }
-          .dropdown-hover .dropdown-menu.chat-dropdown-list .chat-list li:last-child {
-            border-bottom: solid 0; }
-          .dropdown-hover .dropdown-menu.chat-dropdown-list .chat-list li p {
+          .dropdown-hover .dropdown-menu.cart-dropdown .cart-list li .img-holder {
+            width: 70px;
+            height: 70px;
+            margin: 10px 10px 10px 0;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+                align-items: center; }
+            .dropdown-hover .dropdown-menu.cart-dropdown .cart-list li .img-holder img {
+              max-width: 100%;
+              max-height: 100%; }
+          .dropdown-hover .dropdown-menu.cart-dropdown .cart-list li p {
             margin: 0;
-            padding-left: 15px; }
+            padding-left: 15px;
+            width: 100%; }
+            .dropdown-hover .dropdown-menu.cart-dropdown .cart-list li p span {
+              float: right; }
   .dropdown-hover:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
