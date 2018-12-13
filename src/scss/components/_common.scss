@@ -33,6 +33,10 @@ body {
     &.menu-open {
       transform: translateX($sidebar-width)
     }
+
+    &.user-menu-open {
+      transform: translateX(-$sidebar-width)
+    }
   }
 }
 

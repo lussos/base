@@ -1,6 +1,5 @@
 // Improve default Bootrstap dropdown 
 
-
 .dropdown-hover {
   position: relative;
 
@@ -23,6 +22,7 @@
         height: 18px;
         margin-right: 10px;
         margin-bottom: 4px;
+        opacity: .6;
       }
     }
 
@@ -264,6 +264,10 @@
       }
     }
 
+  }
+
+  .dropdown-divider {
+    margin: 0;
   }
 
   &:hover {

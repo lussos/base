@@ -108,12 +108,67 @@
           fill: $body-color;
         }
 
-        &.user-placeholder {
-          background-image: $user-placeholder;
-          background-repeat: no-repeat;
-          background-position: 50% 50%;
-          background-size: 30px;
+        &.user-menu {
+
+
+          .user-placeholder {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-image: $user-placeholder;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-size: cover;
+            position: relative;
+
+            &:before,
+            &:after {
+              content: "";
+              width: 20px;
+              height: 1px;
+              position: absolute;
+              top: 15px;
+              left: 5px;
+              opacity: 0;
+              visibility: hidden;
+              transition: all .5ьs;
+              background-color: $body-color;
+            }
+
+            &:before {
+              transform: rotate(0deg);
+            }
+
+            &:after {
+              transform: rotate(0deg);
+            }
+          }
+
+          &.close-user-menu {
+            .user-placeholder {
+              background-position: 50px;
+
+              &:before,
+              &:after {
+                content: "";
+                opacity: 1;
+                visibility: visible;
+              }
+
+              &:before {
+                transform: rotate(45deg);
+              }
+
+              &:after {
+                transform: rotate(-45deg);
+              }
+            }
+
+            background-image: none !important;
+          }
         }
+
 
         &:hover {
           background: $gray-200;
@@ -121,12 +176,22 @@
           &:active {
             background: $gray-300;
           }
+        }
 
-          &.user-placeholder {
-            background-image: $user-placeholder;
-            background-repeat: no-repeat;
-            background-position: 50% 50%;
-            background-size: 30px;
+        @media (max-width: 991px) {
+          border-left: none;
+
+          .dropdown-menu {
+            display: none;
+
+          }
+
+          &:hover {
+            background: transparent;
+
+            &:active {
+              background: transparent;
+            }
           }
         }
       }

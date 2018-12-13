@@ -16874,6 +16874,8 @@ var Header = function Header() {
   var btnMobile = $(".mobile-menu-btn");
   var main = $('.b-content');
   var sidebar = $('.b-sidebar');
+  var userSidebar = $('.b-user-sidebar');
+  var userSidebarBtn = $('.b-header nav ul #mobile-user-menu-btn');
   $(btnMobile).on('click', function () {
     $(this).toggleClass('close');
     $(main).toggleClass('menu-open');
@@ -16981,16 +16983,27 @@ var $ = require('jquery');
 var userSidebar = function () {
   $(window).on("load resize", function () {
     var width = $(window).width();
-    var html = '<aside class="user-sidebar"></aside>';
+    var html = "<aside class=\"b-user-sidebar\">\n        <span class=\"user-avatar\"></span>\n        <nav>\n          <ul>\n            <li>\n              <svg class = \"icon-alarm\">\n                <use xlink:href=\"./fonts/icons.svg#icon-user-3\"></use>\n              </svg>\n            </li>\n            <li>\n              <svg class=\"icon-alarm\" >\n                <use xlink:href=\"./fonts/icons.svg#icon-settings-5\"></use> </svg>\n            </li>\n            <li>\n              <svg class=\"icon-alarm\">\n                <use xlink:href=\"./fonts/icons.svg#icon-info\"></use>\n              </svg>\n            </li>\n          </ul>\n        </nav>\n      </aside>";
 
     if (width <= 991) {
-      var addedHtml = $('.user-sidebar');
+      $('.b-header nav ul li.user-menu').attr('id', 'mobile-user-menu-btn');
+      var addedHtml = $('.b-user-sidebar');
 
       if ($(addedHtml).length == 0) {
         $(html).insertAfter('.b-sidebar');
+
+        if ($(userSidebarBtn).length > 0) {
+          $(userSidebarBtn).on('click', function () {
+            $(this).toggleClass('close-user-menu');
+            $(main).toggleClass('user-menu-open');
+            $(header).toggleClass('user-menu-open');
+            $(userSidebar).toggleClass('show');
+          });
+        }
       }
     } else if (width > 991) {
-      $('.user-sidebar').remove();
+      $('.b-user-sidebar').remove();
+      $('.b-header nav ul li.user-menu').attr('id', '');
     }
   });
 }();
