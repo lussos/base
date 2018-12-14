@@ -16870,23 +16870,22 @@ exports.default = void 0;
 var $ = require('jquery');
 
 var Header = function Header() {
-  var header = $('.b-header');
-  var btnMobile = $(".mobile-menu-btn");
-  var main = $('.b-content');
-  var sidebar = $('.b-sidebar');
-  var userSidebar = $('.b-user-sidebar');
-  var userSidebarBtn = $('.b-header nav ul #mobile-user-menu-btn');
-  $(btnMobile).on('click', function () {
-    $(this).toggleClass('close');
-    $(main).toggleClass('menu-open');
-    $(header).toggleClass('menu-open');
-    $(sidebar).toggleClass('show');
-  });
+  var $header = $('.b-header');
+  var $btnMobile = $(".mobile-menu-btn");
+  var $main = $('.b-content');
+  var $sidebar = $('.b-sidebar');
+  var $userSidebar = $('.b-user-sidebar');
+  var $userSidebarBtn = $('.b-header nav ul #mobile-user-menu-btn');
+  $btnMobile.on('click', changeClasses);
+
+  function changeClasses() {
+    $btnMobile.toggleClass('close');
+    $main.toggleClass('menu-open');
+    $header.toggleClass('menu-open');
+    $sidebar.toggleClass('show');
+  }
 };
 
-setTimeout(function () {
-  Header();
-}, 500);
 var _default = Header;
 exports.default = _default;
 
@@ -17033,6 +17032,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // export for others scripts to use
 window.$ = _jquery.default;
 window.jQuery = _jquery.default;
-(0, _sidebar.default)();
+setTimeout(function () {
+  (0, _sidebar.default)();
+  (0, _header.default)();
+}, 500);
 
 },{"./lib/header":4,"./lib/object-fit":5,"./lib/sidebar":6,"./lib/user-sidebar":7,"bootstrap":1,"jquery":2,"popper.js":3}]},{},[8]);

@@ -5,23 +5,22 @@
 let $ = require('jquery');
 
 let Header = function () {
-  const header = $('.b-header');
-  const btnMobile = $(".mobile-menu-btn");
-  const main = $('.b-content');
-  const sidebar = $('.b-sidebar');
-  const userSidebar = $('.b-user-sidebar');
-  const userSidebarBtn = $('.b-header nav ul #mobile-user-menu-btn');
+  const $header = $('.b-header');
+  const $btnMobile = $(".mobile-menu-btn");
+  const $main = $('.b-content');
+  const $sidebar = $('.b-sidebar');
+  const $userSidebar = $('.b-user-sidebar');
+  const $userSidebarBtn = $('.b-header nav ul #mobile-user-menu-btn');
 
-  $(btnMobile).on('click', function () {
-    $(this).toggleClass('close');
-    $(main).toggleClass('menu-open');
-    $(header).toggleClass('menu-open');
-    $(sidebar).toggleClass('show');
-  });
-};
+  $btnMobile.on('click', changeClasses);
 
-setTimeout(() => {
-  Header();
-}, 500);
+  function changeClasses() {
+    $btnMobile.toggleClass('close');
+    $main.toggleClass('menu-open');
+    $header.toggleClass('menu-open');
+    $sidebar.toggleClass('show');
+  }
+}
+
 
 export default Header

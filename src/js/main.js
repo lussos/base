@@ -15,4 +15,8 @@ import ObjectFit from './lib/object-fit';
 
 
 
-Sidebar()
+
+setTimeout(() => {
+  Sidebar()
+  Header();
+}, 500);
