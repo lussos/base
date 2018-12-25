@@ -16859,6 +16859,44 @@ return Popper;
 },{}],4:[function(require,module,exports){
 "use strict";
 
+var _jquery = _interopRequireDefault(require("jquery"));
+
+var _bootstrap = _interopRequireDefault(require("bootstrap"));
+
+var _popper = _interopRequireDefault(require("popper.js"));
+
+var _header = _interopRequireDefault(require("./lib/header"));
+
+var _sidebar = _interopRequireDefault(require("./lib/sidebar"));
+
+var _userSidebar = _interopRequireDefault(require("./lib/user-sidebar"));
+
+var _objectFit = _interopRequireDefault(require("./lib/object-fit"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// export for others scripts to use
+window.$ = _jquery.default;
+window.jQuery = _jquery.default;
+(0, _jquery.default)('.b-header').load('./html-components/header.html');
+(0, _jquery.default)('.b-sidebar').load('./html-components/sidebar.html');
+(0, _jquery.default)('.b-user-sidebar').load('./html-components/user-sidebar.html');
+(0, _jquery.default)('.b-dashboard').load('./html-components/dashboard.html');
+
+(function () {
+  "use strict";
+
+  setTimeout(function () {
+    (0, _sidebar.default)();
+    (0, _header.default)();
+    (0, _userSidebar.default)();
+    (0, _objectFit.default)();
+  }, 500);
+})();
+
+},{"./lib/header":5,"./lib/object-fit":6,"./lib/sidebar":7,"./lib/user-sidebar":8,"bootstrap":1,"jquery":2,"popper.js":3}],5:[function(require,module,exports){
+"use strict";
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -16874,8 +16912,6 @@ var Header = function Header() {
   var $btnMobile = $(".mobile-menu-btn");
   var $main = $('.b-content');
   var $sidebar = $('.b-sidebar');
-  var $userSidebar = $('.b-user-sidebar');
-  var $userSidebarBtn = $('.b-header nav ul #mobile-user-menu-btn');
   $btnMobile.on('click', changeClasses);
 
   function changeClasses() {
@@ -16889,7 +16925,7 @@ var Header = function Header() {
 var _default = Header;
 exports.default = _default;
 
-},{"jquery":2}],5:[function(require,module,exports){
+},{"jquery":2}],6:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -16897,14 +16933,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-// Javascript function that render for all browsers "object-fit: cover;" css property
-var $ = require('jquery');
+var _jquery = _interopRequireDefault(require("jquery"));
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Javascript function that render for all browsers "object-fit: cover;" css property
 var ObjectFit = function ObjectFit() {
-  var header = $('.b-header');
-  var el = header.find('.object-fit');
+  var el = (0, _jquery.default)('.object-fit');
   el.each(function () {
-    var container = $(this),
+    var container = (0, _jquery.default)(this),
         imgUrl = container.find('img').prop('src');
 
     if (imgUrl) {
@@ -16916,13 +16953,10 @@ var ObjectFit = function ObjectFit() {
   });
 };
 
-setTimeout(function () {
-  ObjectFit();
-}, 1000);
 var _default = ObjectFit;
 exports.default = _default;
 
-},{"jquery":2}],6:[function(require,module,exports){
+},{"jquery":2}],7:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -16969,7 +17003,7 @@ var Sidebar = function Sidebar() {
 var _default = Sidebar;
 exports.default = _default;
 
-},{"jquery":2}],7:[function(require,module,exports){
+},{"jquery":2}],8:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -16977,64 +17011,36 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var $ = require('jquery');
-
-var userSidebar = function () {
-  $(window).on("load resize", function () {
-    var width = $(window).width();
-    var html = "<aside class=\"b-user-sidebar\">\n        <span class=\"user-avatar\"></span>\n        <nav>\n          <ul>\n            <li>\n              <svg class = \"icon-alarm\">\n                <use xlink:href=\"./fonts/icons.svg#icon-user-3\"></use>\n              </svg>\n            </li>\n            <li>\n              <svg class=\"icon-alarm\" >\n                <use xlink:href=\"./fonts/icons.svg#icon-settings-5\"></use> </svg>\n            </li>\n            <li>\n              <svg class=\"icon-alarm\">\n                <use xlink:href=\"./fonts/icons.svg#icon-info\"></use>\n              </svg>\n            </li>\n          </ul>\n        </nav>\n      </aside>";
-
-    if (width <= 991) {
-      $('.b-header nav ul li.user-menu').attr('id', 'mobile-user-menu-btn');
-      var addedHtml = $('.b-user-sidebar');
-
-      if ($(addedHtml).length == 0) {
-        $(html).insertAfter('.b-sidebar');
-
-        if ($(userSidebarBtn).length > 0) {
-          $(userSidebarBtn).on('click', function () {
-            $(this).toggleClass('close-user-menu');
-            $(main).toggleClass('user-menu-open');
-            $(header).toggleClass('user-menu-open');
-            $(userSidebar).toggleClass('show');
-          });
-        }
-      }
-    } else if (width > 991) {
-      $('.b-user-sidebar').remove();
-      $('.b-header nav ul li.user-menu').attr('id', '');
-    }
-  });
-}();
-
-var _default = userSidebar;
-exports.default = _default;
-
-},{"jquery":2}],8:[function(require,module,exports){
-"use strict";
-
 var _jquery = _interopRequireDefault(require("jquery"));
-
-var _bootstrap = _interopRequireDefault(require("bootstrap"));
-
-var _popper = _interopRequireDefault(require("popper.js"));
-
-var _header = _interopRequireDefault(require("./lib/header"));
-
-var _sidebar = _interopRequireDefault(require("./lib/sidebar"));
-
-var _userSidebar = _interopRequireDefault(require("./lib/user-sidebar"));
-
-var _objectFit = _interopRequireDefault(require("./lib/object-fit"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// export for others scripts to use
-window.$ = _jquery.default;
-window.jQuery = _jquery.default;
-setTimeout(function () {
-  (0, _sidebar.default)();
-  (0, _header.default)();
-}, 500);
+var UserSidebar = function UserSidebar() {
+  (0, _jquery.default)(document).ready(function () {
+    var width = (0, _jquery.default)(window).width();
 
-},{"./lib/header":4,"./lib/object-fit":5,"./lib/sidebar":6,"./lib/user-sidebar":7,"bootstrap":1,"jquery":2,"popper.js":3}]},{},[8]);
+    if (width <= 991) {
+      (0, _jquery.default)('.b-header nav ul li.user-menu').addClass('mobile-user-menu-btn');
+      var $btn = (0, _jquery.default)('.mobile-user-menu-btn');
+
+      if ($btn.length > 0) {
+        var $header = (0, _jquery.default)('.b-header');
+        var $main = (0, _jquery.default)('.b-content');
+        var $sidebar = (0, _jquery.default)('.b-user-sidebar');
+        $btn.on('click', function () {
+          (0, _jquery.default)(this).toggleClass('close-user-menu');
+          $main.toggleClass('user-menu-open');
+          $header.toggleClass('user-menu-open');
+          $sidebar.toggleClass('show');
+        });
+      }
+    } else if (width > 991) {
+      (0, _jquery.default)('.b-header nav ul li.user-menu').removeClass('mobile-user-menu-btn').off('click');
+    }
+  });
+};
+
+var _default = UserSidebar;
+exports.default = _default;
+
+},{"jquery":2}]},{},[4]);

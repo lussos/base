@@ -1,5 +1,5 @@
 .b-user-sidebar {
-  width: $sidebar-width;
+  width: $user-sidebar-width;
   height: $sidebar-height;
   display: block;
   background-color: $sidebar-bg;
@@ -7,16 +7,95 @@
   transition: all .3s;
   position: fixed;
   top: 50px;
-  right: 0;
+  left: 100%;
+  padding: $content-padding;
+
+  .user-sidebar-header {
+    margin-bottom: 50px;
+  }
 
   @media (max-width: 991px) {
     top: 0;
-    right: 0;
-    transform: translateX(100%);
+    left: 100%;
+    transform: translateX(0);
     height: 100vh;
 
     &.show {
-      transform: translateX(0);
+      transform: translateX(-100%);
+    }
+  }
+
+  >.user-sidebar-tabs {
+    height: calc(100vh - 138px);
+
+    >ul {
+      display: flex;
+      justify-content: space-between;
+      height: 70px;
+      margin-bottom: 0;
+
+      >li {
+        width: 70px;
+        height: 70px;
+        background-color: $gray-400;
+        border-radius: 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        svg {
+          width: 35px;
+          height: 35px;
+        }
+
+        .badge {
+          position: absolute;
+          top: -0.3em;
+          right: -0.3em;
+          line-height: .7em;
+        }
+      }
+    }
+
+    .tabs-content {
+      height: calc(100% - 70px);
+      overflow: hidden;
+      position: relative;
+
+      >.user-nav {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        overflow-y: scroll;
+
+        >ul {
+          padding-top: 50px;
+
+          >li {
+
+            >a {
+              display: flex;
+              align-items: center;
+              height: 80px;
+
+              svg {
+                width: 30px;
+                height: 30px;
+                margin-right: $content-padding;
+                opacity: .5;
+                margin-top: -5px;
+              }
+
+              span {
+                font-size: 20px;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
