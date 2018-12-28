@@ -16859,148 +16859,6 @@ return Popper;
 },{}],4:[function(require,module,exports){
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-/* ============================================================
- * Header functionality
- * ============================================================ */
-var $ = require('jquery');
-
-var Header = function Header() {
-  var header = $('.b-header');
-  var btnMobile = $(".mobile-menu-btn");
-  var main = $('.b-content');
-  var sidebar = $('.b-sidebar');
-  $(btnMobile).on('click', function () {
-    $(this).toggleClass('close');
-    $(main).toggleClass('menu-open');
-    $(header).toggleClass('menu-open');
-    $(sidebar).toggleClass('show');
-  });
-};
-
-setTimeout(function () {
-  Header();
-}, 500);
-var _default = Header;
-exports.default = _default;
-
-},{"jquery":2}],5:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-// Javascript function that render for all browsers "object-fit: cover;" css property
-var $ = require('jquery');
-
-var ObjectFit = function ObjectFit() {
-  var header = $('.b-header');
-  var el = header.find('.object-fit');
-  el.each(function () {
-    var container = $(this),
-        imgUrl = container.find('img').prop('src');
-
-    if (imgUrl) {
-      container.css({
-        'background-image': 'url(' + imgUrl + ')'
-      });
-      container.find('img').remove();
-    }
-  });
-};
-
-setTimeout(function () {
-  ObjectFit();
-}, 1000);
-var _default = ObjectFit;
-exports.default = _default;
-
-},{"jquery":2}],6:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _jquery = _interopRequireDefault(require("jquery"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/* ============================================================
- * Sidebar functionality
- * ============================================================ */
-var Sidebar = function Sidebar() {
-  var links = (0, _jquery.default)('.b-sidebar > nav > ul > li > a');
-  var subLink = (0, _jquery.default)('.has-sub ul li a');
-  (0, _jquery.default)(links).on("click", function (e) {
-    if ((0, _jquery.default)(this).parent().has("ul")) {
-      e.preventDefault();
-    }
-
-    if (!(0, _jquery.default)(this).hasClass("open")) {
-      // hide any open menus and remove all other classes
-      (0, _jquery.default)(".b-sidebar li ul").slideUp(300);
-      (0, _jquery.default)(links).removeClass("open");
-      (0, _jquery.default)(subLink).removeClass("open"); // open our new menu and add the open class
-
-      (0, _jquery.default)(this).next("ul").slideDown(300);
-      (0, _jquery.default)(this).addClass("open");
-    } else if ((0, _jquery.default)(this).hasClass("open")) {
-      (0, _jquery.default)(this).removeClass("open");
-      (0, _jquery.default)(this).next("ul").slideUp(300);
-    }
-  });
-  (0, _jquery.default)(subLink).on('click', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    (0, _jquery.default)(subLink).removeClass('open');
-    (0, _jquery.default)(this).addClass('open');
-  });
-};
-
-var _default = Sidebar;
-exports.default = _default;
-
-},{"jquery":2}],7:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var $ = require('jquery');
-
-var userSidebar = function () {
-  $(window).on("load resize", function () {
-    var width = $(window).width();
-    var html = '<aside class="user-sidebar"></aside>';
-
-    if (width <= 991) {
-      var addedHtml = $('.user-sidebar');
-
-      if ($(addedHtml).length == 0) {
-        $(html).insertAfter('.b-sidebar');
-      }
-    } else if (width > 991) {
-      $('.user-sidebar').remove();
-    }
-  });
-}();
-
-var _default = userSidebar;
-exports.default = _default;
-
-},{"jquery":2}],8:[function(require,module,exports){
-"use strict";
-
 var _jquery = _interopRequireDefault(require("jquery"));
 
 var _bootstrap = _interopRequireDefault(require("bootstrap"));
@@ -17020,6 +16878,209 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // export for others scripts to use
 window.$ = _jquery.default;
 window.jQuery = _jquery.default;
-(0, _sidebar.default)();
+(0, _jquery.default)('.b-header').load('./html-components/header.html');
+(0, _jquery.default)('.b-sidebar').load('./html-components/sidebar.html');
+(0, _jquery.default)('.b-user-sidebar').load('./html-components/user-sidebar.html');
+(0, _jquery.default)('.b-dashboard').load('./html-components/dashboard.html');
 
-},{"./lib/header":4,"./lib/object-fit":5,"./lib/sidebar":6,"./lib/user-sidebar":7,"bootstrap":1,"jquery":2,"popper.js":3}]},{},[8]);
+(function () {
+  "use strict";
+
+  setTimeout(function () {
+    (0, _sidebar.default)();
+    (0, _header.default)();
+    (0, _userSidebar.default)();
+    (0, _objectFit.default)();
+  }, 500);
+})();
+
+},{"./lib/header":5,"./lib/object-fit":6,"./lib/sidebar":7,"./lib/user-sidebar":8,"bootstrap":1,"jquery":2,"popper.js":3}],5:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+/* ============================================================
+ * Header functionality
+ * ============================================================ */
+var $ = require('jquery');
+
+var Header = function Header() {
+  var $header = $('.b-header');
+  var $btnMobile = $(".mobile-menu-btn");
+  var $main = $('.b-content');
+  var $sidebar = $('.b-sidebar');
+  $btnMobile.on('click', showMobileMenu);
+
+  function showMobileMenu() {
+    $(this).toggleClass('close');
+    $main.toggleClass('menu-open');
+    $header.toggleClass('menu-open');
+    $sidebar.toggleClass('show');
+  }
+};
+
+var _default = Header;
+exports.default = _default;
+
+},{"jquery":2}],6:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _jquery = _interopRequireDefault(require("jquery"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Javascript function that render for all browsers "object-fit: cover;" css property
+var ObjectFit = function ObjectFit() {
+  var el = (0, _jquery.default)('.object-fit');
+  el.each(function () {
+    var container = (0, _jquery.default)(this),
+        imgUrl = container.find('img').prop('src');
+
+    if (imgUrl) {
+      container.css({
+        'background-image': 'url(' + imgUrl + ')'
+      });
+      container.find('img').remove();
+    }
+  });
+};
+
+var _default = ObjectFit;
+exports.default = _default;
+
+},{"jquery":2}],7:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _jquery = _interopRequireDefault(require("jquery"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* ============================================================
+ * Sidebar functionality
+ * ============================================================ */
+var Sidebar = function Sidebar() {
+  // Cache DOM
+  var $links = (0, _jquery.default)('.b-sidebar > nav > ul > li > a');
+  var $subLink = (0, _jquery.default)('.has-sub ul li a'); // Events
+
+  $links.on('click', linkSudebarMenu);
+  $subLink.on('click', sublinkSidebarMenu); // Functions
+
+  function linkSudebarMenu(event) {
+    if ((0, _jquery.default)(this).parent().has("ul")) {
+      event.preventDefault();
+    }
+
+    if (!(0, _jquery.default)(this).hasClass("open")) {
+      // hide any open menus and remove all other classes
+      (0, _jquery.default)(".b-sidebar li ul").slideUp(300);
+      $links.removeClass("open");
+      $subLink.removeClass("open"); // open our new menu and add the open class
+
+      (0, _jquery.default)(this).next("ul").slideDown(300);
+      (0, _jquery.default)(this).addClass("open");
+    } else if ((0, _jquery.default)(this).hasClass("open")) {
+      (0, _jquery.default)(this).removeClass("open");
+      (0, _jquery.default)(this).next("ul").slideUp(300);
+    }
+  }
+
+  function sublinkSidebarMenu(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    $subLink.removeClass('open');
+    (0, _jquery.default)(this).addClass('open');
+  }
+};
+
+var _default = Sidebar;
+exports.default = _default;
+
+},{"jquery":2}],8:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _jquery = _interopRequireDefault(require("jquery"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var UserSidebar = function UserSidebar() {
+  // User Sidebar open close module
+  var userSidebarOpen = function () {
+    var width = (0, _jquery.default)(window).width();
+
+    if (width <= 991) {
+      (0, _jquery.default)('.b-header nav ul li.user-menu').addClass('mobile-user-menu-btn');
+      var $btn = (0, _jquery.default)('.mobile-user-menu-btn');
+
+      if ($btn.length > 0) {
+        var showUserMenu = function showUserMenu() {
+          (0, _jquery.default)(this).toggleClass('close-user-menu');
+          $main.toggleClass('user-menu-open');
+          $header.toggleClass('user-menu-open');
+          $sidebar.toggleClass('show');
+        };
+
+        var $header = (0, _jquery.default)('.b-header');
+        var $main = (0, _jquery.default)('.b-content');
+        var $sidebar = (0, _jquery.default)('.b-user-sidebar');
+        $btn.on('click', showUserMenu);
+      }
+    } else if (width > 991) {
+      (0, _jquery.default)('.b-header nav ul li.user-menu').removeClass('mobile-user-menu-btn').off('click');
+    }
+  }(); // User Sidebar Tabs module
+
+
+  var userSidebarTabs = function () {
+    // Cache DOM
+    var $tabBtn = (0, _jquery.default)('.b-user-sidebar .user-sidebar-tabs > ul >li');
+    var $close = (0, _jquery.default)('.b-user-sidebar .user-sidebar-tabs .close-btn');
+    var $userNav = (0, _jquery.default)('.b-user-sidebar .user-sidebar-tabs .user-nav');
+    var $tabContent = (0, _jquery.default)('.b-user-sidebar .user-sidebar-tabs .tabs-content').find('*[class^="tab"]'); // Events
+
+    $tabBtn.on('click', openTabUserSidebar);
+    $close.on('click', closeTabUserSidebar); // Fucntions
+
+    function openTabUserSidebar() {
+      var $this = (0, _jquery.default)(this);
+      $tabContent.removeClass('show').addClass('hide');
+      var activeTab = $this.attr("rel");
+      (0, _jquery.default)("." + activeTab).addClass('show').removeClass('hide');
+      $tabBtn.removeClass('active').addClass('hide');
+      $this.addClass("active").removeClass('hide');
+      $close.addClass('show');
+      $userNav.addClass('hide');
+    }
+
+    function closeTabUserSidebar() {
+      $tabContent.removeClass('show').addClass('hide');
+      $userNav.removeClass('hide');
+      $tabBtn.removeClass('hide');
+      $tabBtn.removeClass('active');
+      (0, _jquery.default)(this).removeClass('show');
+    }
+  }();
+};
+
+var _default = UserSidebar;
+exports.default = _default;
+
+},{"jquery":2}]},{},[4]);

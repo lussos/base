@@ -9,6 +9,7 @@
     var $fileInput = $(this).find('input[type=file]');
     var $imageArea = $(this).find('.image-placeholder');
     var fileInfo;
+
     $fileInput.on('change', getFileInfo);
 
     function getFileInfo(e) {

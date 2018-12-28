@@ -62,7 +62,7 @@ gulp.task('sass', function () {
 
 // Babel js task
 gulp.task("scripts", function () {
-  return browserify("./src/js/main.js")
+  return browserify("./src/js/index.js")
     .transform(babelify)
     .bundle()
     .pipe(source('base.js'))
