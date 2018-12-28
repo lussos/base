@@ -9542,7 +9542,7 @@ body {
   left: 100%;
   padding: 1.3rem; }
   .b-user-sidebar .user-sidebar-header {
-    margin-bottom: 50px; }
+    margin-bottom: 30px; }
   @media (max-width: 991px) {
     .b-user-sidebar {
       top: 0;
@@ -9552,14 +9552,42 @@ body {
       .b-user-sidebar.show {
         transform: translateX(-100%); } }
   .b-user-sidebar > .user-sidebar-tabs {
-    height: calc(100vh - 138px); }
+    height: calc(100vh - 138px);
+    position: relative; }
+    .b-user-sidebar > .user-sidebar-tabs .close-btn {
+      position: absolute;
+      right: 10px;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      display: block;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all .3s; }
+      .b-user-sidebar > .user-sidebar-tabs .close-btn:before, .b-user-sidebar > .user-sidebar-tabs .close-btn:after {
+        content: '';
+        width: 18px;
+        height: 2px;
+        background-color: #797979;
+        margin: 0 auto -5px;
+        display: block; }
+      .b-user-sidebar > .user-sidebar-tabs .close-btn:before {
+        transform: rotate(45deg);
+        margin-top: 8px; }
+      .b-user-sidebar > .user-sidebar-tabs .close-btn:after {
+        transform: rotate(-45deg);
+        margin-top: 3px; }
+      .b-user-sidebar > .user-sidebar-tabs .close-btn.show {
+        opacity: 1;
+        visibility: visible; }
     .b-user-sidebar > .user-sidebar-tabs > ul {
       display: -ms-flexbox;
       display: flex;
       -ms-flex-pack: justify;
           justify-content: space-between;
       height: 70px;
-      margin-bottom: 0; }
+      margin-bottom: 30px; }
       .b-user-sidebar > .user-sidebar-tabs > ul > li {
         width: 70px;
         height: 70px;
@@ -9571,7 +9599,8 @@ body {
             justify-content: center;
         -ms-flex-align: center;
             align-items: center;
-        position: relative; }
+        position: relative;
+        transition: all .3s; }
         .b-user-sidebar > .user-sidebar-tabs > ul > li svg {
           width: 35px;
           height: 35px; }
@@ -9580,8 +9609,16 @@ body {
           top: -0.3em;
           right: -0.3em;
           line-height: .7em; }
+        .b-user-sidebar > .user-sidebar-tabs > ul > li.hide {
+          transform: scale(0);
+          visibility: hidden;
+          opacity: 0; }
+        .b-user-sidebar > .user-sidebar-tabs > ul > li.active:nth-child(2) {
+          transform: translateX(-94px); }
+        .b-user-sidebar > .user-sidebar-tabs > ul > li.active:nth-child(3) {
+          transform: translateX(-184px); }
     .b-user-sidebar > .user-sidebar-tabs .tabs-content {
-      height: calc(100% - 70px);
+      height: calc(100% - 80px);
       overflow: hidden;
       position: relative; }
       .b-user-sidebar > .user-sidebar-tabs .tabs-content > .user-nav {
@@ -9590,22 +9627,34 @@ body {
         position: absolute;
         left: 0;
         top: 0;
-        overflow-y: scroll; }
-        .b-user-sidebar > .user-sidebar-tabs .tabs-content > .user-nav > ul {
-          padding-top: 50px; }
-          .b-user-sidebar > .user-sidebar-tabs .tabs-content > .user-nav > ul > li > a {
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-align: center;
-                align-items: center;
-            height: 80px; }
-            .b-user-sidebar > .user-sidebar-tabs .tabs-content > .user-nav > ul > li > a svg {
-              width: 30px;
-              height: 30px;
-              margin-right: 1.3rem;
-              opacity: .5;
-              margin-top: -5px; }
-            .b-user-sidebar > .user-sidebar-tabs .tabs-content > .user-nav > ul > li > a span {
-              font-size: 20px; }
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        transition: all .3s; }
+        .b-user-sidebar > .user-sidebar-tabs .tabs-content > .user-nav > ul > li > a {
+          display: -ms-flexbox;
+          display: flex;
+          -ms-flex-align: center;
+              align-items: center;
+          height: 80px; }
+          .b-user-sidebar > .user-sidebar-tabs .tabs-content > .user-nav > ul > li > a svg {
+            width: 30px;
+            height: 30px;
+            margin-right: 1.3rem;
+            opacity: .5;
+            margin-top: -5px; }
+          .b-user-sidebar > .user-sidebar-tabs .tabs-content > .user-nav > ul > li > a span {
+            font-size: 20px; }
+        .b-user-sidebar > .user-sidebar-tabs .tabs-content > .user-nav.hide {
+          transform: translateX(-100%); }
+      .b-user-sidebar > .user-sidebar-tabs .tabs-content [class*="tab-"] {
+        height: 100%;
+        width: 100%;
+        transition: all .3s ease-in-out;
+        transform: translateX(100%);
+        position: absolute;
+        top: 0;
+        left: 0; }
+        .b-user-sidebar > .user-sidebar-tabs .tabs-content [class*="tab-"].show {
+          transform: translateX(0); }
 
 /*# sourceMappingURL=css/base.css.map */

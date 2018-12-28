@@ -16912,10 +16912,10 @@ var Header = function Header() {
   var $btnMobile = $(".mobile-menu-btn");
   var $main = $('.b-content');
   var $sidebar = $('.b-sidebar');
-  $btnMobile.on('click', changeClasses);
+  $btnMobile.on('click', showMobileMenu);
 
-  function changeClasses() {
-    $btnMobile.toggleClass('close');
+  function showMobileMenu() {
+    $(this).toggleClass('close');
     $main.toggleClass('menu-open');
     $header.toggleClass('menu-open');
     $sidebar.toggleClass('show');
@@ -16972,18 +16972,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Sidebar functionality
  * ============================================================ */
 var Sidebar = function Sidebar() {
-  var links = (0, _jquery.default)('.b-sidebar > nav > ul > li > a');
-  var subLink = (0, _jquery.default)('.has-sub ul li a');
-  (0, _jquery.default)(links).on("click", function (e) {
+  // Cache DOM
+  var $links = (0, _jquery.default)('.b-sidebar > nav > ul > li > a');
+  var $subLink = (0, _jquery.default)('.has-sub ul li a'); // Events
+
+  $links.on('click', linkSudebarMenu);
+  $subLink.on('click', sublinkSidebarMenu); // Functions
+
+  function linkSudebarMenu(event) {
     if ((0, _jquery.default)(this).parent().has("ul")) {
-      e.preventDefault();
+      event.preventDefault();
     }
 
     if (!(0, _jquery.default)(this).hasClass("open")) {
       // hide any open menus and remove all other classes
       (0, _jquery.default)(".b-sidebar li ul").slideUp(300);
-      (0, _jquery.default)(links).removeClass("open");
-      (0, _jquery.default)(subLink).removeClass("open"); // open our new menu and add the open class
+      $links.removeClass("open");
+      $subLink.removeClass("open"); // open our new menu and add the open class
 
       (0, _jquery.default)(this).next("ul").slideDown(300);
       (0, _jquery.default)(this).addClass("open");
@@ -16991,13 +16996,14 @@ var Sidebar = function Sidebar() {
       (0, _jquery.default)(this).removeClass("open");
       (0, _jquery.default)(this).next("ul").slideUp(300);
     }
-  });
-  (0, _jquery.default)(subLink).on('click', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    (0, _jquery.default)(subLink).removeClass('open');
+  }
+
+  function sublinkSidebarMenu(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    $subLink.removeClass('open');
     (0, _jquery.default)(this).addClass('open');
-  });
+  }
 };
 
 var _default = Sidebar;
@@ -17016,7 +17022,8 @@ var _jquery = _interopRequireDefault(require("jquery"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var UserSidebar = function UserSidebar() {
-  (0, _jquery.default)(document).ready(function () {
+  // User Sidebar open close module
+  var userSidebarOpen = function () {
     var width = (0, _jquery.default)(window).width();
 
     if (width <= 991) {
@@ -17024,20 +17031,53 @@ var UserSidebar = function UserSidebar() {
       var $btn = (0, _jquery.default)('.mobile-user-menu-btn');
 
       if ($btn.length > 0) {
-        var $header = (0, _jquery.default)('.b-header');
-        var $main = (0, _jquery.default)('.b-content');
-        var $sidebar = (0, _jquery.default)('.b-user-sidebar');
-        $btn.on('click', function () {
+        var showUserMenu = function showUserMenu() {
           (0, _jquery.default)(this).toggleClass('close-user-menu');
           $main.toggleClass('user-menu-open');
           $header.toggleClass('user-menu-open');
           $sidebar.toggleClass('show');
-        });
+        };
+
+        var $header = (0, _jquery.default)('.b-header');
+        var $main = (0, _jquery.default)('.b-content');
+        var $sidebar = (0, _jquery.default)('.b-user-sidebar');
+        $btn.on('click', showUserMenu);
       }
     } else if (width > 991) {
       (0, _jquery.default)('.b-header nav ul li.user-menu').removeClass('mobile-user-menu-btn').off('click');
     }
-  });
+  }(); // User Sidebar Tabs module
+
+
+  var userSidebarTabs = function () {
+    // Cache DOM
+    var $tabBtn = (0, _jquery.default)('.b-user-sidebar .user-sidebar-tabs > ul >li');
+    var $close = (0, _jquery.default)('.b-user-sidebar .user-sidebar-tabs .close-btn');
+    var $userNav = (0, _jquery.default)('.b-user-sidebar .user-sidebar-tabs .user-nav');
+    var $tabContent = (0, _jquery.default)('.b-user-sidebar .user-sidebar-tabs .tabs-content').find('*[class^="tab"]'); // Events
+
+    $tabBtn.on('click', openTabUserSidebar);
+    $close.on('click', closeTabUserSidebar); // Fucntions
+
+    function openTabUserSidebar() {
+      var $this = (0, _jquery.default)(this);
+      $tabContent.removeClass('show').addClass('hide');
+      var activeTab = $this.attr("rel");
+      (0, _jquery.default)("." + activeTab).addClass('show').removeClass('hide');
+      $tabBtn.removeClass('active').addClass('hide');
+      $this.addClass("active").removeClass('hide');
+      $close.addClass('show');
+      $userNav.addClass('hide');
+    }
+
+    function closeTabUserSidebar() {
+      $tabContent.removeClass('show').addClass('hide');
+      $userNav.removeClass('hide');
+      $tabBtn.removeClass('hide');
+      $tabBtn.removeClass('active');
+      (0, _jquery.default)(this).removeClass('show');
+    }
+  }();
 };
 
 var _default = UserSidebar;

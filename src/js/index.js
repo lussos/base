@@ -22,11 +22,11 @@ import ObjectFit from './lib/object-fit'
 
 (function () {
   "use strict";
+
   setTimeout(() => {
     Sidebar()
     Header()
     UserSidebar()
     ObjectFit()
-
   }, 500);
 })()

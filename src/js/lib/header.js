@@ -10,15 +10,14 @@ let Header = function () {
   const $main = $('.b-content');
   const $sidebar = $('.b-sidebar');
 
-  $btnMobile.on('click', changeClasses);
+  $btnMobile.on('click', showMobileMenu);
 
-  function changeClasses() {
-    $btnMobile.toggleClass('close');
+  function showMobileMenu() {
+    $(this).toggleClass('close');
     $main.toggleClass('menu-open');
     $header.toggleClass('menu-open');
     $sidebar.toggleClass('show');
   }
-
 }
 
 

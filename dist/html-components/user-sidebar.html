@@ -4,29 +4,92 @@
   </div>
 </div>
 <div class="user-sidebar-tabs">
+  <span class="close-btn"></span>
   <ul>
-    <li>
+    <li rel="tab-chat">
       <svg class="icon-alarm">
         <use xlink:href="./fonts/icons.svg#icon-chat-2"></use>
       </svg>
-      <div class="badge badge-danger badge-pill">7</div>
+      <div class="badge badge-danger badge-pill text-white">7</div>
     </li>
-    <li>
+    <li rel="tab-notifications">
       <svg class="icon-alarm">
         <use xlink:href="./fonts/icons.svg#icon-alarm"></use>
       </svg>
-      <div class="badge badge-danger badge-pill">3</div>
+      <div class="badge badge-danger badge-pill text-white">3</div>
     </li>
-    <li>
+    <li rel="tab-cart">
       <svg class="icon-alarm">
         <use xlink:href="./fonts/icons.svg#icon-basket-3"></use>
       </svg>
-      <div class="badge badge-danger badge-pill">5</div>
+      <div class="badge badge-danger badge-pill text-white">5</div>
     </li>
   </ul>
   <div class="tabs-content">
+    <div class="tab-chat">
+      <ul class="chat-list">
+        <li class="dropdown-item">
+          <span class="user-avatar object-fit sm">
+            <img src="./images/users/3.jpg" alt="">
+          </span>
+          <p>Joana Backer</p>
+          <span class="badge badge-pill badge-primary ml-auto">2</span>
+        </li>
+        <li class="dropdown-item">
+          <span class="user-avatar object-fit sm">
+            <img src="./images/users/1.jpg" alt="">
+          </span>
+          <p>George</p>
+          <span class="badge badge-pill badge-primary ml-auto">7</span>
+        </li>
+        <li class="dropdown-item">
+          <span class="user-avatar object-fit sm">
+            <img src="./images/users/6.jpg" alt="">
+          </span>
+          <p>Sarah </p>
+          <span class="badge badge-pill badge-primary ml-auto">1</span>
+        </li>
+        <li class="dropdown-item">
+          <span class="user-avatar object-fit sm">
+            <img src="./images/users/4.jpg" alt="">
+          </span>
+          <p>Shiobhan</p>
+          <span class="badge badge-pill badge-primary ml-auto">3</span>
+        </li>
+        <li class="dropdown-item">
+          <span class="user-avatar object-fit sm">
+            <img src="./images/users/2.jpg" alt="">
+          </span>
+          <p>James</p>
+          <span class="badge badge-pill badge-primary ml-auto">1</span>
+        </li>
+        <li class="dropdown-item">
+          <span class="user-avatar object-fit sm">
+            <img src="./images/users/5.jpg" alt="">
+          </span>
+          <p>Jesica</p>
+          <span class="badge badge-pill badge-primary ml-auto">1</span>
+        </li>
+      </ul>
+    </div>
     <div class="tab-cart">
-
+      <ul class="cart-list">
+        <li>
+          <div class="img-holder">
+            <img src="./images/ecommerse/cart/1.png" alt="">
+          </div>
+          <p>Beats by Dre <span class="font-weight-bold">$299.99</span></p>
+        </li>
+        <li>
+          <div class="img-holder">
+            <img src="./images/ecommerse/cart/2.png" alt="">
+          </div>
+          <p>POLAROID SP01W very long name to see<span class="font-weight-bold">$329.99</span></p>
+        </li>
+        <li class="pt-4 pb-4">
+          <p class="text-right font-weight-bold">Total: $529.98 </p>
+        </li>
+      </ul>
     </div>
     <div class="tab-notifications">
       <ul class="notifications-list">
